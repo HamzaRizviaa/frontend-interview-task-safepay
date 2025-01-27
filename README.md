@@ -13,6 +13,7 @@ This React project has been created using Vite with TypeScript. I have used the 
 - React-Router-Dom for routing across the app.
 - Material UI Data Grid as the tabular grid for displaying records of the students.
 - React-Toastify to display notifications.
+- Framer Motion for animations.
 
 # Getting Started
 

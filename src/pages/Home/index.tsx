@@ -13,6 +13,9 @@ import {
 import { getColumns } from "../../data/helpers/dataGridHelpers";
 import { Student } from "../../types";
 import DeleteStudentModal from "../../components/forms/DeleteForm";
+import { motion } from "framer-motion";
+
+const MotionButton = motion(Button);
 
 const Home: React.FC = () => {
   //States
@@ -77,9 +80,20 @@ const Home: React.FC = () => {
   return (
     <DashboardLayout>
       <FlexLayoutWrapper page="home">
-        <Button onClick={handleOpenFormModal} page="home" size="large">
+        <MotionButton
+          onClick={handleOpenFormModal}
+          page="home"
+          size="large"
+          whileHover={{
+            scale: 1.05,
+            backgroundColor: "#4CAF50",
+            boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
+          }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
           ADD STUDENT
-        </Button>
+        </MotionButton>
       </FlexLayoutWrapper>
 
       <DataGrid columns={columns} rows={rows} />
