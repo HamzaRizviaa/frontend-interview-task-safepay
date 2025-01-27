@@ -8,6 +8,7 @@ import {
 } from "../../styles/globalStyledComponents";
 import { useAppDispatch } from "../../store/hooks";
 import { getSpecificStudent } from "../../data/features/students/studentActions";
+import backgroundImage from "../../assets/Images/backgroundImage.webp"; //Compressed Image
 
 const Lookup: React.FC = () => {
   //States
@@ -39,7 +40,7 @@ const Lookup: React.FC = () => {
   };
 
   return (
-    <DashboardLayout>
+    <DashboardLayout background={backgroundImage}>
       <InputWrapper>
         <InputField
           name="lookup"

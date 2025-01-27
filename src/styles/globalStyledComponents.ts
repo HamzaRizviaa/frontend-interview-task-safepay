@@ -15,9 +15,10 @@ interface ButtonProps {
 export const InputWrapper = styled("div", {
   shouldForwardProp: (prop) => prop !== "page",
 })<PageProps>(({ page, theme }) => ({
-  margin: "50px 0px",
-  padding: "50px",
+  margin: "30px 0px",
+  padding: "25px",
   height: "auto",
+  borderRadius: "10px",
   backgroundColor:
     page === "home"
       ? theme.palette.tertiary.light
@@ -30,12 +31,14 @@ export const FlexLayoutWrapper = styled("div", {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  margin: "50px 0px",
+  margin: "30px 0px",
   padding: "25px",
+  borderRadius: "10px",
   backgroundColor:
     page === "home"
       ? theme.palette.tertiary.light
       : theme.palette.tertiary.dark,
+  height: page === "lookup" ? "calc(100vh - 356px)" : "auto",
 }));
 
 export const Button = styled(ButtonMUI, {

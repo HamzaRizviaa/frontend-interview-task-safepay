@@ -7,3 +7,9 @@
 .Toastify__toast--error {
   background: #ffa700 !important;
 }
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}

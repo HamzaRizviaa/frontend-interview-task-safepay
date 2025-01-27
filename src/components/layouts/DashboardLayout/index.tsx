@@ -5,12 +5,13 @@ import { ContentWrapper } from "./styledComponents";
 
 interface Props {
   children: React.ReactNode;
+  background?: string;
 }
 
-const DashboardLayout: React.FC<Props> = ({ children }) => {
+const DashboardLayout: React.FC<Props> = ({ children, background = "" }) => {
   return (
     <PrimaryLoader loading={false}>
-      <ContentWrapper>
+      <ContentWrapper background={background}>
         <Header />
         {children}
       </ContentWrapper>

@@ -4,7 +4,8 @@ import {
   Box,
   BoxFormHeader,
   ButtonWrapper,
-} from "../StudentForm/StyledComponents";
+  MessageLabel,
+} from "./StyledComponents";
 import { Button, Logo2 } from "../../../styles/globalStyledComponents";
 
 interface Props {
@@ -27,9 +28,9 @@ const DeleteStudentModal: React.FC<Props> = ({
             <h2>DELETE STUDENT</h2>
           </BoxFormHeader>
 
-          <div style={{ padding: "1rem" }}>
-            <p>Are you sure you want to delete this student?</p>
-          </div>
+          <MessageLabel>
+            Are you sure you want to delete this student?
+          </MessageLabel>
 
           <ButtonWrapper>
             <Button page="home" type="button" onClick={handleClose}>

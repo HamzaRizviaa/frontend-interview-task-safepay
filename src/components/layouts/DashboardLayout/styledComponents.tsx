@@ -1,6 +1,15 @@
 import { styled } from "@mui/system";
 
-export const ContentWrapper = styled("div")({
-  padding: "1.5rem 2rem 0rem 2rem",
-  width: "calc(100% - 5rem)",
-});
+interface ContentWrapperProps {
+  background?: string;
+}
+
+export const ContentWrapper = styled("div")<ContentWrapperProps>(
+  ({ background }) => ({
+    padding: "1.5rem 2rem 1rem 2rem",
+    backgroundImage: background ? `url(${background})` : "none",
+    backgroundPosition: "center center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+  })
+);
