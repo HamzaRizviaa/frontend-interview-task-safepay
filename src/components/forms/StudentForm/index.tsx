@@ -20,6 +20,7 @@ import {
   createStudent,
   updateStudent,
 } from "../../../data/features/students/studentActions";
+import FormikRadioField from "../../ui/inputs/formik/FormikRadioField";
 
 interface Props {
   open: boolean;
@@ -87,11 +88,15 @@ const StudentForm: React.FC<Props> = ({ open, handleClose, isEdit }) => {
                   label="NAME"
                   maxLength={20}
                 />
-                <FormikField
-                  placeholder={"Enter sex"}
+
+                <FormikRadioField
                   name="sex"
                   label="SEX"
-                  maxLength={10}
+                  options={[
+                    { value: "Male", label: "Male" },
+                    { value: "Female", label: "Female" },
+                    { value: "Other", label: "Other" },
+                  ]}
                 />
                 <FormikField
                   placeholder={"Enter age"}

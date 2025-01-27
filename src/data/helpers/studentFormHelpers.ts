@@ -15,9 +15,8 @@ export const studentFormInitialValues: Omit<Student, "uuid"> = {
 export const studentFormValidationSchema = Yup.object({
   name: Yup.string().trim().required("You need to enter a name"),
   sex: Yup.string()
-    .matches(/(fe)?male/i, "Please enter either male or female")
-    .trim()
-    .required("You need to enter your gender"),
+    .oneOf(["Male", "Female", "Other"], "Please select an appropriate option.")
+    .required("You need to select the gender"),
   age: Yup.number()
     .required("You need to enter your age")
     .min(1, "Atleast 1 character required"),
