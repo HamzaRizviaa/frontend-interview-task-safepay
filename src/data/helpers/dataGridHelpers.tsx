@@ -13,19 +13,20 @@ export function getColumns({
   onDelete: (student: Student) => void;
 }): GridColDef[] {
   return [
-    { field: "uuid", headerName: "ID", width: 150 },
-    { field: "name", headerName: "Name", width: 250 },
-    { field: "age", headerName: "Age", width: 150 },
-    { field: "sex", headerName: "Sex", width: 200 },
-    { field: "class", headerName: "Class", width: 150 },
-    { field: "siblings", headerName: "Siblings", width: 150 },
-    { field: "gpa", headerName: "GPA", width: 150 },
+    { field: "uuid", headerName: "ID", flex: 1, minWidth: 80 },
+    { field: "name", headerName: "Name", flex: 2, minWidth: 120 },
+    { field: "age", headerName: "Age", flex: 1, minWidth: 80 },
+    { field: "sex", headerName: "Sex", flex: 1, minWidth: 80 },
+    { field: "class", headerName: "Class", flex: 1, minWidth: 80 },
+    { field: "siblings", headerName: "Siblings", flex: 1, minWidth: 80 },
+    { field: "gpa", headerName: "GPA", flex: 1, minWidth: 80 },
     {
       field: "actions",
       headerName: "Actions",
       sortable: false,
       filterable: false,
-      width: 120,
+      flex: 1,
+      minWidth: 100,
       renderCell: (params: GridRenderCellParams<Student>) => {
         const { row } = params;
 
