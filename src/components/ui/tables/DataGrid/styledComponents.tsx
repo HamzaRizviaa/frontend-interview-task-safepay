@@ -3,7 +3,7 @@ import { Box as BoxMUI, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
 export const BoxWrapperGrid = styled(BoxMUI)({
-  height: "calc(100vh - 316px)",
+  height: "calc(100vh - 300px)",
   display: "flex",
   flexDirection: "column",
   width: "100%",

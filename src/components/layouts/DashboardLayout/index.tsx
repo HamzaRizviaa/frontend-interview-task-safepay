@@ -12,7 +12,7 @@ const DashboardLayout: React.FC<Props> = ({ children, background = "" }) => {
   return (
     <PrimaryLoader loading={false}>
       <ContentWrapper background={background}>
-        <Header />
+        <Header background={background} />
         {children}
       </ContentWrapper>
     </PrimaryLoader>
