@@ -1,7 +1,6 @@
 import React from "react";
 import {
   FormControl,
-  RadioGroup,
   FormControlLabel,
   Radio,
   FormHelperText,
@@ -10,6 +9,7 @@ import {
   RadioFieldContainer,
   LabelContainer,
   InputLabel,
+  StyledRadioGroup,
 } from "./styledComponents";
 
 export type RadioFieldOption = {
@@ -45,7 +45,12 @@ const RadioField: React.FC<RadioFieldProps> = ({
       )}
 
       <FormControl error={hasError} component="fieldset" variant="standard">
-        <RadioGroup name={name} value={value || ""} onChange={onChange} row>
+        <StyledRadioGroup
+          name={name}
+          value={value || ""}
+          onChange={onChange}
+          row
+        >
           {options.map((option) => (
             <FormControlLabel
               key={option.value}
@@ -54,7 +59,7 @@ const RadioField: React.FC<RadioFieldProps> = ({
               label={option.label}
             />
           ))}
-        </RadioGroup>
+        </StyledRadioGroup>
 
         {error && <FormHelperText>{error}</FormHelperText>}
       </FormControl>

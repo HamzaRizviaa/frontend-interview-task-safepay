@@ -1,11 +1,11 @@
-import { Box, styled } from "@mui/material";
+import { Box, RadioGroup, styled } from "@mui/material";
 
 interface InputLabelProps {
   error?: boolean;
 }
 
 export const RadioFieldContainer = styled(Box)(() => ({
-  marginBottom: "1rem",
+  marginBottom: "1.4rem",
 }));
 
 export const LabelContainer = styled("div")(() => ({
@@ -22,4 +22,11 @@ export const InputLabel = styled("span", {
   fontWeight: "bold",
   textTransform: "uppercase",
   color: error ? theme.palette.error.main : theme.palette.primary.dark,
+}));
+
+export const StyledRadioGroup = styled(RadioGroup)(({ theme }) => ({
+  display: "flex",
+  "& .MuiFormControlLabel-root": {
+    marginRight: theme.spacing(1),
+  },
 }));

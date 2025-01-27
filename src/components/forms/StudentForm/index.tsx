@@ -21,6 +21,7 @@ import {
   updateStudent,
 } from "../../../data/features/students/studentActions";
 import FormikRadioField from "../../ui/inputs/formik/FormikRadioField";
+import { Grid } from "@mui/material";
 
 interface Props {
   open: boolean;
@@ -82,54 +83,61 @@ const StudentForm: React.FC<Props> = ({ open, handleClose, isEdit }) => {
           >
             <Form>
               <FieldBox>
-                <FormikField
-                  placeholder={"Enter name"}
-                  name="name"
-                  label="NAME"
-                  maxLength={20}
-                />
+                <Grid container spacing={2}>
+                  <Grid item xs={12} sm={6}>
+                    <FormikField
+                      placeholder={"Enter name"}
+                      name="name"
+                      label="NAME"
+                      maxLength={20}
+                    />
 
-                <FormikRadioField
-                  name="sex"
-                  label="SEX"
-                  options={[
-                    { value: "Male", label: "Male" },
-                    { value: "Female", label: "Female" },
-                    { value: "Other", label: "Other" },
-                  ]}
-                />
-                <FormikField
-                  placeholder={"Enter age"}
-                  name="age"
-                  label="AGE"
-                  allowOnlyNumbers
-                  maxLength={2}
-                  isEdit={isEdit}
-                />
-                <FormikField
-                  placeholder={"Enter siblings"}
-                  name="siblings"
-                  label="SIBLINGS"
-                  allowOnlyNumbers
-                  maxLength={2}
-                  isEdit={isEdit}
-                />
-                <FormikField
-                  placeholder={"Enter class"}
-                  name="class"
-                  label="CLASS"
-                  allowOnlyNumbers
-                  maxLength={2}
-                  isEdit={isEdit}
-                />
-                <FormikField
-                  placeholder={"X.XX"}
-                  name="gpa"
-                  label="GPA"
-                  maxLength={4}
-                  allowGPA
-                  isEdit={isEdit}
-                />
+                    <FormikRadioField
+                      name="sex"
+                      label="SEX"
+                      options={[
+                        { value: "Male", label: "Male" },
+                        { value: "Female", label: "Female" },
+                        { value: "Other", label: "Other" },
+                      ]}
+                    />
+                    <FormikField
+                      placeholder={"Enter age"}
+                      name="age"
+                      label="AGE"
+                      allowOnlyNumbers
+                      maxLength={2}
+                      isEdit={isEdit}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12} sm={6}>
+                    <FormikField
+                      placeholder={"Enter siblings"}
+                      name="siblings"
+                      label="SIBLINGS"
+                      allowOnlyNumbers
+                      maxLength={2}
+                      isEdit={isEdit}
+                    />
+                    <FormikField
+                      placeholder={"Enter class"}
+                      name="class"
+                      label="CLASS"
+                      allowOnlyNumbers
+                      maxLength={2}
+                      isEdit={isEdit}
+                    />
+                    <FormikField
+                      placeholder={"X.XX"}
+                      name="gpa"
+                      label="GPA"
+                      maxLength={4}
+                      allowGPA
+                      isEdit={isEdit}
+                    />
+                  </Grid>
+                </Grid>
               </FieldBox>
               <ButtonWrapper>
                 <Button page="home" type="submit" disabled={isSubmitting}>
