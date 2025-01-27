@@ -19,7 +19,7 @@ This React project has been created using Vite with TypeScript. I have used the 
 ### Clone Repository
 
 ```bash
-git clone https://github.com/HamzaRizviaa/Safepay-FrontEnd-Interview.git
+git clone https://github.com/HamzaRizviaa/frontend-interview-task-safepay.git
 
 ```
 

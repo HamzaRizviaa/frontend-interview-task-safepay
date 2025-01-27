@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import { SearchIconSVG } from "../../../../assets/svg-icons";
+import { TextField } from "@mui/material";
 
 export const InputFieldContainer = styled("div")(({ theme }) => ({
   marginBottom: "0.5rem",
@@ -48,3 +49,23 @@ export const SearchIcon = styled(SearchIconSVG)({
   marginRight: 10,
   width: "20px",
 });
+
+export const StyledTextField = styled(TextField)(({ theme }) => ({
+  "& .MuiInputBase-root": {
+    color: `${theme.palette.primary.dark} !important`,
+    border: `1px solid ${theme.palette.primary.dark}`,
+    paddingLeft: "1rem !important",
+    fontSize: "1.4rem !important",
+    lineHeight: "1.6 !important",
+    backgroundColor: theme.palette.secondary.dark,
+
+    "& svg": {
+      fontSize: "2.5rem",
+    },
+
+    "& input": {
+      height: "2.94rem",
+      padding: 0,
+    },
+  },
+}));

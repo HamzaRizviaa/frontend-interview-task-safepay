@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { GridRowsProp, GridRowParams } from "@mui/x-data-grid";
+import { GridRowsProp } from "@mui/x-data-grid";
 import DashboardLayout from "../../components/layouts/DashboardLayout";
 import { Button, FlexLayoutWrapper } from "../../styles/globalStyledComponents";
 import StudentForm from "../../components/forms/StudentForm";
 import DataGrid from "../../components/ui/tables/DataGrid";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
+  deleteStudent,
   getAllStudents,
   getSpecificStudent,
 } from "../../data/features/students/studentActions";
-import { columns } from "../../data/helpers/dataGridHelpers";
+import { getColumns } from "../../data/helpers/dataGridHelpers";
 import { Student } from "../../types";
+import DeleteStudentModal from "../../components/forms/DeleteForm";
 
 const Home: React.FC = () => {
   //States
   const [showModal, setShowModal] = useState(false);
   const [isEdit, setEdit] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
   const dispatch = useAppDispatch();
 
@@ -24,7 +27,7 @@ const Home: React.FC = () => {
     dispatch(getAllStudents());
   }, []);
 
-  const { students } = useAppSelector(
+  const { students, specificStudent } = useAppSelector(
     (state) => state.rootReducer.studentSlice
   );
 
@@ -39,12 +42,37 @@ const Home: React.FC = () => {
     setShowModal(false);
   };
 
-  //function for row click on the data grid which dispatches the specific student's detials through fetch student.
-  const handleRowClick = (params: GridRowParams<Student>) => {
-    dispatch(getSpecificStudent(params.row.uuid));
+  const handleOpenDeleteModal = (student: Student) => {
+    dispatch(getSpecificStudent(student.uuid));
+    setDeleteModalOpen(true);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setDeleteModalOpen(false);
+  };
+
+  //function for editing a row on the data grid which dispatches the specific student's detials through fetch student.
+  const handleEditStudent = (student: Student) => {
+    dispatch(getSpecificStudent(student.uuid));
     setEdit(true);
     setShowModal(true);
   };
+
+  //function for deleting a row on the data grid.
+  const handleConfirmDelete = async () => {
+    try {
+      if (!specificStudent) return;
+      await dispatch(deleteStudent(specificStudent.uuid));
+      handleCloseDeleteModal();
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const columns = getColumns({
+    onEdit: handleEditStudent,
+    onDelete: handleOpenDeleteModal,
+  });
 
   return (
     <DashboardLayout>
@@ -54,12 +82,18 @@ const Home: React.FC = () => {
         </Button>
       </FlexLayoutWrapper>
 
-      <DataGrid onRowClick={handleRowClick} columns={columns} rows={rows} />
+      <DataGrid columns={columns} rows={rows} />
 
       <StudentForm
         isEdit={isEdit}
         open={showModal}
         handleClose={handleCloseFormModal}
+      />
+
+      <DeleteStudentModal
+        open={deleteModalOpen}
+        handleClose={handleCloseDeleteModal}
+        handleConfirm={handleConfirmDelete}
       />
     </DashboardLayout>
   );

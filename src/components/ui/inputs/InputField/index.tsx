@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import TextField from "@mui/material/TextField";
 import { InputAdornment } from "@mui/material";
 import { isNumber, isGPA } from "../../../../data/helpers/commonHelpers";
 
-import { useInputStyles } from "../input.styles";
 import {
   InputFieldContainer,
   InputLabel,
   LabelsContainer,
   RightLabel,
   SearchIcon,
+  StyledTextField,
 } from "./styledComponents";
 
 export type InputFieldProps = {
@@ -49,8 +48,6 @@ const InputField: React.FC<InputFieldProps> = ({
 }) => {
   const [innerValue, setInnerValue] = useState("");
 
-  const inputClasses = useInputStyles({});
-
   //validates fields if they have numbers/gpa props and fires onChange
   const handleChange = (
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
@@ -86,7 +83,7 @@ const InputField: React.FC<InputFieldProps> = ({
         </LabelsContainer>
       )}
 
-      <TextField
+      <StyledTextField
         {...restProps}
         onKeyDown={onKeyDown}
         autoComplete="off"
@@ -98,7 +95,6 @@ const InputField: React.FC<InputFieldProps> = ({
         fullWidth
         inputProps={{ maxLength }}
         InputProps={{
-          className: inputClasses.textFieldInput,
           endAdornment: !!endIcon && (
             <InputAdornment position="end">
               <SearchIcon onClick={onIconClick} />

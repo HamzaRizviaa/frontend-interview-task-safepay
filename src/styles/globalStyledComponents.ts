@@ -71,7 +71,6 @@ export const Button = styled(ButtonMUI, {
 export const Logo2 = styled(Logo2Black)({
   height: "40px",
   width: "40px",
-  cursor: "pointer",
 
   " &:hover": {
     transform: "rotate(360deg)",

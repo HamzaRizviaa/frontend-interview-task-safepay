@@ -2,12 +2,11 @@ import React from "react";
 import { DataGridProps } from "@mui/x-data-grid";
 import { BoxWrapperGrid, DataGridMUI, GridHeader } from "./styledComponents";
 
-const DataGrid: React.FC<DataGridProps> = ({ onRowClick, rows, columns }) => {
+const DataGrid: React.FC<DataGridProps> = ({ rows, columns }) => {
   return (
     <BoxWrapperGrid>
       <GridHeader variant="h3">Manage Students</GridHeader>
       <DataGridMUI
-        onRowClick={onRowClick}
         getRowId={(row) => row.uuid}
         rows={rows}
         columns={columns}

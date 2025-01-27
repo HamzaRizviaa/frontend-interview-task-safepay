@@ -18,7 +18,6 @@ import {
 import { Student } from "../../../types";
 import {
   createStudent,
-  deleteStudent,
   updateStudent,
 } from "../../../data/features/students/studentActions";
 
@@ -58,19 +57,6 @@ const StudentForm: React.FC<Props> = ({ open, handleClose, isEdit }) => {
           )
         : await dispatch(createStudent(values));
       formikBag.resetForm({ values: studentFormInitialValues });
-      handleClose();
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  //handler fired on delete button
-  const onDeleteHandler = async (id: number) => {
-    setIsSubmitting(true);
-    try {
-      await dispatch(deleteStudent(id));
       handleClose();
     } catch (e) {
       console.error(e);
@@ -141,15 +127,6 @@ const StudentForm: React.FC<Props> = ({ open, handleClose, isEdit }) => {
                 />
               </FieldBox>
               <ButtonWrapper>
-                {isEdit && (
-                  <Button
-                    onClick={() => onDeleteHandler(specificStudent?.uuid || 0)}
-                    type="button"
-                    page="homeDelete"
-                  >
-                    DELETE STUDENT
-                  </Button>
-                )}
                 <Button page="home" type="submit" disabled={isSubmitting}>
                   {isEdit ? "UPDATE STUDENT" : "ADD STUDENT"}
                 </Button>
